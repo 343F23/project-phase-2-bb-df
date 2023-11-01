@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project 1</title>
+    
+    <link href="css/style.css" rel="stylesheet">
+</head>
+  
+<body>
+    <header>
+        <a href="report.html" target="_blank"><img class="report" src="images/weather.png" alt="Weather Logo"></a>
+    </header>
+
+    <nav>
+        <ul class="nav">
+        <li class="active nav2"><a class="nav3" href="index.html">Home</a></li>
+        <li class="nav2"><a class="nav3" href="day.html">Daily</a></li>
+        <li class="nav2"><a class="nav3" href="week.html">Weekly</a></li>
+        <li class="nav2"><a class="nav3" href="month.html">Monthly</a></li>
+        <li class="nav2"><a class="nav3" href="map.html">Map</a></li>
+       </ul>
+    </nav>
+
+    <main>
+        <form>
+            <p>Please enter a date to see what you should wear!</p>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" value="" min="" max="2030-1-1">
+        </form>
+
+        <img class="form-img" src="images/calendar.png" alt="this is an image of a calendar"></img>
+    
+        <script>
+            var date = new Date();
+            var day = String(date.getDate());
+            var month = String(date.getMonth() + 1);
+            var year = date.getFullYear();
+            
+            date = year + '-' + month + '-' + day;
+            document.getElementById('date').setAttribute('min', date);
+            document.getElementById('date').setAttribute('value', date);
+        </script>
+    
+        <div class="grid-container">
+          <div class="grid-item">Today:</div>
+          <div class="grid-item">Tomorrow:</div>
+          <div class="grid-item">This Week:</div>  
+        </div>
+    </main>
+    
+  
+</body>
+</html>

@@ -1,0 +1,97 @@
+
+body{
+    background: lightblue;
+}
+
+.report {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkgrey;
+    width: 75%;
+    border-radius: 25px;
+}
+  
+.nav2 {
+    float: left;
+    width: 20%;
+    }
+  
+.nav3 {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Courier New', Courier;
+  }
+
+.nav3:hover {
+    background-color: black;
+    color: white;
+  }
+  
+.active {
+    background-color: grey;
+  }
+
+  /* Here is one media query for the nav bar. 
+  this will make it go vertical once the page 
+  goes under 600px */
+  @media screen and (max-width: 600px) {
+    .nav2 {
+      float: none;
+      display: block;
+      width: 100%;
+    }
+  }
+
+form {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.form-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 1em;
+    padding: 1em;
+}
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 2em;
+    font-size: 3em;
+}
+
+/* Here is a second media query, this one for our flex-box, 
+  this will make it go vertical once the page 
+  goes under 1000px */
+
+@media (min-width: 1000px) {
+    .grid-container {
+        grid-template-columns: auto auto auto;
+    }
+}
+  
