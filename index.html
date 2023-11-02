@@ -27,20 +27,22 @@
         <form>
             <p>Please enter a date to see what you should wear!</p>
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date" value="" min="2000-1-1" max="2030-1-1">
+            <input type="date" id="date" name="date" value="" min="" max="2030-01-01" />
+            <p><button>Submit</button></p>
         </form>
 
         <img class="form-img" src="images/calendar.png" alt="calendar">
     
         <script>
-            var date = new Date();
-            var day = String(date.getDate());
-            var month = String(date.getMonth() + 1);
-            var year = date.getFullYear();
+            var today = new Date();
+            var day = String(today.getDate()).padStart(2, '0');
+            var month = String(today.getMonth() + 1).padStart(2, '0');
+            var year = today.getFullYear();
             
-            date = year + '-' + month + '-' + day;
-            document.getElementById('date').setAttribute('min', date);
-            document.getElementById('date').setAttribute('value', date);
+            todaysDate = year + '-' + month + '-' + day;
+            const dateControl = document.querySelector('input[type="date"]');
+            dateControl.value = todaysDate;
+            dateControl.min = todaysDate;
         </script>
     
         <div class="grid-container">
