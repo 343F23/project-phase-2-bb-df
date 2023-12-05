@@ -1,3 +1,7 @@
+html {
+    font-family: 'Courier New', Courier;
+    font-weight: bold;
+}
 
 body{
     background: lightblue;
@@ -18,7 +22,7 @@ nav{
 
 .nav {
     list-style-type: none;
-    margin: 0;
+    margin-bottom: 30px;
     padding: 0;
     overflow: hidden;
     background-color: white;
@@ -61,8 +65,26 @@ nav{
   }
 
 form {
-    margin-top: 40px;
     text-align: center;
+}
+
+.zipform input{
+    text-align: center;
+    width: 20%;
+    border: none;
+    padding: 20px;
+    font-size: 1em;
+    outline: none;
+    margin-bottom: 5px;
+    background: #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    -webkit-transition: all 0.5s ;
+    -moz-transition: all 0.5s ;
+    -ms-transition: all 0.5s ;
+    -o-transition: all 0.5s ;
+    transition: all 0.5s ;
 }
 
 .form-img {
@@ -82,7 +104,7 @@ form {
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 2em;
-    font-size: 3em;
+    font-size: 1.5em;
 }
 
 /* Here is a second media query, this one for our flex-box, 
@@ -95,3 +117,60 @@ form {
     }
 }
   
+.wrap{
+    width: 1200px;
+    margin:30px auto;
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: 300px auto;
+}
+
+.mapform input{
+    width: 100%;
+    border: none;
+    padding: 20px;
+    font-size: 1em;
+    outline: none;
+    margin-bottom: 5px;
+    background: #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    -webkit-transition: all 0.5s ;
+    -moz-transition: all 0.5s ;
+    -ms-transition: all 0.5s ;
+    -o-transition: all 0.5s ;
+    transition: all 0.5s ;
+}
+
+.form input:focus{
+    background: #aaa;
+}
+.form .form__btn{
+    color: #aaa;
+    background: rgb(63, 192, 46);
+}
+
+#map{
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+}
+
+#mapinstructions {
+    text-align: center;
+    font-family: 'Courier New', Courier;
+    font-weight: bold;
+}
+
+.cards {
+    width: 90vw;
+    display: flex;
+    flex-wrap: nowrap; /* This will prevent the cards from wrapping onto the next line */
+    justify-content: space-around;
+    overflow-x: auto; /* This will add a scrollbar if the cards overflow the container */
+}
+
+.card {
+    margin: 10px;
+}

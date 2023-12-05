@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Project 1</title>
-    
     <link href="css/style.css" rel="stylesheet">
 </head>
   
@@ -24,32 +23,38 @@
     </nav>
 
     <main>
+        <form id="weatherForm" class="zipform">
+            <label for="zipcode">Enter your zipcode to get weather in your area:</label><br><br>
+            <input type="text" id="zipcode" name="zipcode" pattern="[0-9]{5}" title="Five digit zip code"><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <p id="mapinstructions">If you do not know your zipcode, you can also find your location using our <a href="map.html">MAP</a>.</p>
+
         <form>
             <p>Please enter a date to see what you should wear!</p>
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" value="" min="" max="2030-01-01" />
             <p><button>Submit</button></p>
         </form>
-
-        <img class="form-img" src="images/calendar.png" alt="calendar">
-    
-        <script>
-            var today = new Date();
-            var day = String(today.getDate()).padStart(2, '0');
-            var month = String(today.getMonth() + 1).padStart(2, '0');
-            var year = today.getFullYear();
-            
-            todaysDate = year + '-' + month + '-' + day;
-            const dateControl = document.querySelector('input[type="date"]');
-            dateControl.value = todaysDate;
-            dateControl.min = todaysDate;
-        </script>
     
         <div class="grid-container">
-          <div class="grid-item"><h1>Today:</h1></div>
-          <div class="grid-item"><h1>Tomorrow:</h1></div>
-          <div class="grid-item"><h1>This Week:</h1></div>  
+          <div class="grid-item"><p id="today">Today: [enter zip]</p></div>
+          <div class="grid-item"><p id="tomorrow">Tomorrow: [enter zip]</p></div>
+          <div class="grid-item"><p id="thisweek">Day after: [enter zip]</p></div>  
         </div>
+
+        <form id="export">
+            <input type="submit" value="export all data">
+        </form>
+        
+        <form id="clear">
+            <input type="submit" value="clear all data">
+        </form>
+
+        
+
+        <script src="script/index.js"></script>
     </main>
     
   
