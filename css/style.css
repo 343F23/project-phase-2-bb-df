@@ -164,13 +164,61 @@ form {
 }
 
 .cards {
-    width: 90vw;
+    margin-top: 37px;
+    width: 85vw;
     display: flex;
     flex-wrap: nowrap; /* This will prevent the cards from wrapping onto the next line */
-    justify-content: space-around;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     overflow-x: auto; /* This will add a scrollbar if the cards overflow the container */
+    
+}
+
+.card-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.card-text {
+    text-align: center;
 }
 
 .card {
-    margin: 10px;
+    margin: 5px;
+    border-color: black;
+    border-width: 3px;
+}
+
+.monthcards {
+    width: 70vw;
+    margin-bottom: -3%;
+}
+
+.monthcard {
+    height: 75%;
+}
+
+.monthtitle {
+    margin-top: -25%;
+}
+
+.monthtext {
+    margin-top: -5%;
+    margin-bottom: -5%;
+}
+
+.monthimg {
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title {
+    text-align: center;
+}
+
+h2 {
+    font-size: 140%;
 }

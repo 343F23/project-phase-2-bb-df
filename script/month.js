@@ -11,17 +11,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (longitude != null){
         // Fetch the weather data using the latitude and longitude
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${latitude},${longitude}&days=7`)
+        fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${latitude},${longitude}&days=14`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
             
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < 14; i++) {
                 var date1 = `${data.forecast.forecastday[i].date}`
-                var date1 = swapDateFormat(date1);
-                var date = new Date(date1);
-                var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                var dotwString = daysOfWeek[date.getDay()];
+                var dotwString = swapDateFormat(date1);
 
                 var iconurl = `${data.forecast.forecastday[i].day.condition.icon}`
 
@@ -35,8 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 setMin(minString, `min${i}`);
             }
         })
-        .catch(error => console.error('Error:', error));     
-    }   else if (localStorage.getItem("zip") != null){
+        .catch(error => console.error('Error:', error));
+
+    } else if (localStorage.getItem("zip") != null){
 
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zipcode}&days=14`)
 
@@ -46,10 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             for (let i = 0; i < 14; i++) {
                 var date1 = `${data.forecast.forecastday[i].date}`
-                var date1 = swapDateFormat(date1);
-                var date = new Date(date1);
-                var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                var dotwString = daysOfWeek[date.getDay()];
+                var dotwString = swapDateFormat(date1);
 
                 var iconurl = `${data.forecast.forecastday[i].day.condition.icon}`
 
@@ -65,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error:', error));
     }
+
 });
 
 
@@ -99,5 +95,5 @@ function setMin (minString, number) {
 
 function swapDateFormat(inputDate) {
     var dateParts = inputDate.split("-");
-    return dateParts[1] + "-" + dateParts[2] + "-" + dateParts[0];
+    return dateParts[1] + "-" + dateParts[2];
  }

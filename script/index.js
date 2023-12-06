@@ -1,19 +1,12 @@
+if (localStorage.getItem("zip") != null){
+    getWeatherWithZip(localStorage.getItem("zip"))
+}
+
 document.getElementById('weatherForm').addEventListener('submit', function(event) {
     event.preventDefault();  // Prevent the form from submitting via the browser
     var zip = document.getElementById('zipcode').value;
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zip}&days=3`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            
-            // Create strings with the weather data
-            var todayString = `Today in ${data.location.name}, it is ${data.current.condition.text} with a temperature of ${data.current.temp_f}°F (${data.current.temp_c}°C).`;
-            var tomorrowString = `Tomorrow's forecast is ${data.forecast.forecastday[1].day.condition.text} with a high of ${data.forecast.forecastday[1].day.maxtemp_f}°F (${data.forecast.forecastday[1].day.maxtemp_c}°C) and a low of ${data.forecast.forecastday[1].day.mintemp_f}°F (${data.forecast.forecastday[1].day.mintemp_c}°C).`;
-            var thisWeekString = `The day after tomorrow's forecast is ${data.forecast.forecastday[2].day.condition.text} with a high of ${data.forecast.forecastday[2].day.maxtemp_f}°F (${data.forecast.forecastday[2].day.maxtemp_c}°C) and a low of ${data.forecast.forecastday[2].day.mintemp_f}°F (${data.forecast.forecastday[2].day.mintemp_c}°C).`;
-            
-            writeweatherdata(todayString, tomorrowString, thisWeekString)
-        })
-        .catch(error => console.error('Error:', error));
+    localStorage.setItem("zip", zip)
+    getWeatherWithZip(zip);
 });
 
 function writeweatherdata (todayString, tomorrowString, thisWeekString) {
@@ -55,10 +48,28 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error:', error));
     }
+    else if (localStorage.getItem("zip") != null){
+        getWeatherWithZip(localStorage.getItem(zip))
+    }
     
 
 });
 
+function getWeatherWithZip(zip){
+    fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zip}&days=3`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            
+            // Create strings with the weather data
+            var todayString = `Today in ${data.location.name}, it is ${data.current.condition.text} with a temperature of ${data.current.temp_f}°F (${data.current.temp_c}°C).`;
+            var tomorrowString = `Tomorrow's forecast is ${data.forecast.forecastday[1].day.condition.text} with a high of ${data.forecast.forecastday[1].day.maxtemp_f}°F (${data.forecast.forecastday[1].day.maxtemp_c}°C) and a low of ${data.forecast.forecastday[1].day.mintemp_f}°F (${data.forecast.forecastday[1].day.mintemp_c}°C).`;
+            var thisWeekString = `The day after tomorrow's forecast is ${data.forecast.forecastday[2].day.condition.text} with a high of ${data.forecast.forecastday[2].day.maxtemp_f}°F (${data.forecast.forecastday[2].day.maxtemp_c}°C) and a low of ${data.forecast.forecastday[2].day.mintemp_f}°F (${data.forecast.forecastday[2].day.mintemp_c}°C).`;
+            
+            writeweatherdata(todayString, tomorrowString, thisWeekString)
+        })
+        .catch(error => console.error('Error:', error));
+}
 
 document.getElementById('export').addEventListener('submit', function(event) {
     event.preventDefault();  // Prevent the form from submitting via the browser
