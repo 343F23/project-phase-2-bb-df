@@ -10,7 +10,7 @@ function writeweatherdata (todayString) {
 
 
 function getWeatherWithZip(zip){
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zip}&days=3`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zip}&days=3`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (longitude != null && latitude != null){
         // Fetch the weather data using the latitude and longitude
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${latitude},${longitude}&days=1`)
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${latitude},${longitude}&days=1`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -86,10 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     else if (localStorage.getItem("zip") != null){
-        
+
         var zipcode = localStorage.getItem('zip');
 
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zipcode}&days=1`)
+        fetch(`https://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zipcode}&days=1`)
 
         .then(response => response.json())
         .then(data => {
