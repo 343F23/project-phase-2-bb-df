@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (longitude != null){
         // Fetch the weather data using the latitude and longitude
-        fetch(`https://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${latitude},${longitude}&days=7`)
+        fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${latitude},${longitude}&days=7`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Error:', error));     
     }   else if (localStorage.getItem("zip") != null){
 
-        fetch(`https://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zipcode}&days=14`)
+        fetch(`http://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zipcode}&days=14`)
 
         .then(response => response.json())
         .then(data => {
