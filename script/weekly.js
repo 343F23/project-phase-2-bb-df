@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fetch the weather data using the latitude and longitude
         fetch(`https://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${latitude},${longitude}&days=7`)
         .then(response => response.json())
-        .then(data => {
+        .then(async data => {
             console.log(data);
             
             for (let i = 0; i < 7; i++) {
@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                 var dotwString = daysOfWeek[date.getDay()];
 
-                var iconurl = `${data.forecast.forecastday[i].day.condition.icon}`
+                //var iconurl = `${data.forecast.forecastday[i].day.condition.icon}`
+                var iconurl = await searchGiphy(data.forecast.forecastday[i].day.condition.text);
 
                 var maxString = `High: ${data.forecast.forecastday[i].day.maxtemp_f}°F`
 
