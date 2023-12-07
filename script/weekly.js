@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var dotwString = daysOfWeek[date.getDay()];
 
                 //var iconurl = `${data.forecast.forecastday[i].day.condition.icon}`
-                var iconurl = searchGiphy(data.forecast.forecastday[i].day.condition.icon);
+                var iconurl = searchGiphy(`${data.forecast.forecastday[i].day.condition.text}`);
 
                 var maxString = `High: ${data.forecast.forecastday[i].day.maxtemp_f}°F`
 
