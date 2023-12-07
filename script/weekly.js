@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                 var dotwString = daysOfWeek[date.getDay()];
 
-                var iconurl = `${data.forecast.forecastday[i].day.condition.icon}`
+                //var iconurl = `${data.forecast.forecastday[i].day.condition.icon}`
+                var iconurl = searchGiphy(data.forecast.forecastday[i].day.condition.icon);
 
                 var maxString = `High: ${data.forecast.forecastday[i].day.maxtemp_f}°F`
 
@@ -101,3 +102,17 @@ function swapDateFormat(inputDate) {
     var dateParts = inputDate.split("-");
     return dateParts[1] + "-" + dateParts[2] + "-" + dateParts[0];
  }
+
+async function searchGiphy(word) {
+  const giphyResp = await fetch(
+    `https://api.giphy.com/v1/gifs/search?api_key=DqDqE5OTJMZkeTKmfCrx287T2jQL1o6t&q=${word}&limit=1&offset=0&rating=r&lang=en&bundle=messaging_non_clips`
+  );
+
+  const giphyResultJSON = await giphyResp.json();
+
+  const resultURL = giphyResultJSON.data[0].images.original.url;
+  // console.log('giphy gif url', resultURL)
+  return resultURL;
+}
+
+
