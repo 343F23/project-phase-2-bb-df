@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`https://api.weatherapi.com/v1/forecast.json?key=b472bf7cffc84469950230129230412&q=${zipcode}&days=14`)
 
         .then(response => response.json())
-        .then(data => {
+        .then(async data => {
             console.log(data);
             
             for (let i = 0; i < 14; i++) {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 var dotwString = daysOfWeek[date.getDay()];
 
                 //var iconurl = `${data.forecast.forecastday[i].day.condition.icon}`
-                var iconurl = searchGiphy(`${data.forecast.forecastday[i].day.condition.text}`);
+                var iconurl = await searchGiphy(data.forecast.forecastday[i].day.condition.text);
 
                 var maxString = `High: ${data.forecast.forecastday[i].day.maxtemp_f}°F`
 
@@ -78,7 +78,7 @@ function writeDayOfTheWeek (dotwString, number) {
 }
 
 function putInIcons (iconurl, number) {
-
+    console.log('iconurl', iconurl)
     var img = document.getElementById(number);
     
     img.src = iconurl;
@@ -111,7 +111,7 @@ async function searchGiphy(word) {
   const giphyResultJSON = await giphyResp.json();
 
   const resultURL = giphyResultJSON.data[0].images.original.url;
-  // console.log('giphy gif url', resultURL)
+  console.log('giphy gif url', resultURL)
   return resultURL;
 }
 
