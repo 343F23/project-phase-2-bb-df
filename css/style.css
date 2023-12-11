@@ -167,7 +167,7 @@ form {
     margin-top: 37px;
     width: 85vw;
     display: flex;
-    flex-wrap: nowrap; /* This will prevent the cards from wrapping onto the next line */
+    flex-wrap: wrap; /* This will prevent the cards from wrapping onto the next line */
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
@@ -192,25 +192,34 @@ form {
 }
 
 .monthcards {
-    width: 70vw;
-    margin-bottom: -3%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
-
+  
 .monthcard {
-    height: 75%;
+    margin: 10px;
+    width: 20rem;
+}
+  
+@media (max-width: 768px) {
+   .monthcard {
+    width: 100%;
+  }
 }
 
 .monthtitle {
-    margin-top: -25%;
+    margin-top: -5%;
 }
 
 .monthtext {
-    margin-top: -5%;
+    margin-top: 5%;
     margin-bottom: -5%;
 }
 
 .monthimg {
-    width: 55%;
+    width: 45%;
     margin-left: auto;
     margin-right: auto;
 }
